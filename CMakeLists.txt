@@ -6,6 +6,8 @@ set(SNAPPY_MAJOR 1)
 set(SNAPPY_MINOR 1)
 set(SNAPPY_PATCHLEVEL 2)
 
+option(BUILD_WITH_STATIC_CRT "Use CRT Static Runtime Library on Visual Studio" OFF)
+
 ############ configure ################
 
 INCLUDE (CheckIncludeFiles)
