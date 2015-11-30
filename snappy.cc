@@ -36,6 +36,12 @@
 #include <string>
 #include <vector>
 
+#ifdef _MSC_VER
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN
+#include <Windows.h>
+typedef SSIZE_T ssize_t;
+#endif
 
 namespace snappy {
 
