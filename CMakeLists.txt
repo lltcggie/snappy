@@ -117,3 +117,18 @@ INSTALL(TARGETS snappy snappy_static
         RUNTIME DESTINATION bin 
         LIBRARY DESTINATION lib 
         ARCHIVE DESTINATION lib)
+
+include(CMakePackageConfigHelpers)
+
+set(INSTALL_INCLUDE_DIR include)
+configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/package-config.cmakein ${CMAKE_CURRENT_BINARY_DIR}/snappy-config.cmake
+                              INSTALL_DESTINATION CMake
+                              PATH_VARS INSTALL_INCLUDE_DIR
+                              )
+
+write_basic_package_version_file( ${CMAKE_CURRENT_BINARY_DIR}/snappy-config-version.cmake VERSION ${SNAPPY_VERSION} COMPATIBILITY SameMajorVersion )
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/snappy-config.cmake ${CMAKE_CURRENT_BINARY_DIR}/snappy-config-version.cmake
+        DESTINATION CMake )
+
+install(EXPORT snappy-targets DESTINATION CMake)
