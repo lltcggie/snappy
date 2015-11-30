@@ -5,6 +5,7 @@ PROJECT(snappy)
 set(SNAPPY_MAJOR 1)
 set(SNAPPY_MINOR 1)
 set(SNAPPY_PATCHLEVEL 2)
+set(SNAPPY_VERSION "${SNAPPY_MAJOR}.${SNAPPY_MINOR}.${SNAPPY_PATCHLEVEL}")
 
 option(BUILD_WITH_STATIC_CRT "Use CRT Static Runtime Library on Visual Studio" OFF)
 
@@ -114,6 +115,7 @@ add_test(NAME snappy_test WORKING_DIRECTORY ${PROJECT_SOURCE_DIR} COMMAND snappy
 INSTALL(FILES snappy.h snappy-stubs-public.h
         DESTINATION include)
 INSTALL(TARGETS snappy snappy_static
+        EXPORT snappy-targets
         RUNTIME DESTINATION bin 
         LIBRARY DESTINATION lib 
         ARCHIVE DESTINATION lib)
